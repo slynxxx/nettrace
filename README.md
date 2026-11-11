@@ -19,6 +19,10 @@ nettrace only reads system tables. no telemetry, no packet capture, no firewall 
 
 get `nettrace.exe` from the [releases page](https://github.com/slynxxx/nettrace/releases). it is a single self-contained x64 executable: no installer, no admin rights, no .net runtime required.
 
+## credits
+
+built by [slynxxx](https://github.com/slynxxx). [claude](https://claude.ai) helped fix bugs.
+
 ## build
 
 requires the .net 10 sdk on windows 10 1809 or later.
