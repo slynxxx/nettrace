@@ -1,0 +1,18 @@
+# build output
+bin/
+obj/
+publish/
+AppPackages/
+BundleArtifacts/
+
+*.assets.cache
+
+# unused msix packaging project (the app ships as a single unpackaged exe)
+nettrace (Package)/
+
+# ide
+.vs/
+*.user
+
+# local helper
+upload.ps1

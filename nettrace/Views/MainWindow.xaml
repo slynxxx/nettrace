@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="NetTrace.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="using:NetTrace.Models"
+    Title="nettrace">
+
+    <Grid x:Name="RootGrid" Background="{ThemeResource AppBackgroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- sidebar surface -->
+        <Border
+            Grid.RowSpan="2"
+            Background="{ThemeResource SidebarBackgroundBrush}"
+            BorderBrush="{ThemeResource BorderSubtleBrush}"
+            BorderThickness="0,0,1,0" />
+
+        <!-- draggable title bar across the full width -->
+        <Grid x:Name="TitleBar" Grid.ColumnSpan="2" Background="Transparent">
+            <StackPanel Orientation="Horizontal" Spacing="10" Margin="18,0,0,0" VerticalAlignment="Center">
+                <Border Width="16" Height="16" CornerRadius="3" Background="{ThemeResource TextPrimaryBrush}">
+                    <Polyline
+                        Points="2,9 5,9 7,4 9,12 11,7 14,7"
+                        Stroke="{ThemeResource AppBackgroundBrush}"
+                        StrokeThickness="1.4"
+                        StrokeLineJoin="Round" />
+                </Border>
+                <TextBlock
+                    Text="nettrace"
+                    FontFamily="{StaticResource AppFontFamily}"
+                    FontSize="13"
+                    FontWeight="SemiBold"
+                    Foreground="{ThemeResource TextPrimaryBrush}"
+                    VerticalAlignment="Center" />
+            </StackPanel>
+        </Grid>
+
+        <!-- navigation -->
+        <Grid Grid.Row="1" Padding="8,8,9,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ListView
+                x:Name="NavList"
+                SelectionMode="Single"
+                IsItemClickEnabled="False"
+                SelectionChanged="OnNavSelectionChanged">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
+                        <Setter Property="MinHeight" Value="34" />
+                        <Setter Property="Padding" Value="10,0,10,0" />
+                        <Setter Property="Margin" Value="0,1,0,1" />
+                        <Setter Property="CornerRadius" Value="4" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:NavItem">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <FontIcon Style="{StaticResource IconStyle}" Glyph="{x:Bind Glyph}" FontSize="14" Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <TextBlock
+                                Text="{x:Bind Label}"
+                                FontFamily="{StaticResource AppFontFamily}"
+                                FontSize="13"
+                                Foreground="{ThemeResource TextPrimaryBrush}"
+                                VerticalAlignment="Center" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackPanel Grid.Row="1" Spacing="2" Padding="10,0,10,0">
+                <StackPanel Orientation="Horizontal" Spacing="7">
+                    <Ellipse x:Name="LiveDot" Width="5" Height="5" Fill="{ThemeResource TextPrimaryBrush}" VerticalAlignment="Center" />
+                    <TextBlock x:Name="MonitorText" Style="{StaticResource TertiaryTextStyle}" Foreground="{ThemeResource TextSecondaryBrush}" />
+                </StackPanel>
+                <TextBlock Style="{StaticResource TertiaryTextStyle}" Text="passive  ·  local only" />
+            </StackPanel>
+        </Grid>
+
+        <Frame
+            x:Name="ContentFrame"
+            Grid.Row="1"
+            Grid.Column="1"
+            FontFamily="{StaticResource AppFontFamily}" />
+    </Grid>
+</Window>

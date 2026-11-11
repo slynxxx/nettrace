@@ -1,0 +1,11 @@
+<UserControl
+    x:Class="NetTrace.Controls.StatItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Spacing="6" Padding="0,2,16,2">
+        <TextBlock x:Name="LabelText" Style="{StaticResource SectionLabelTextStyle}" />
+        <TextBlock x:Name="ValueText" Style="{StaticResource StatValueTextStyle}" />
+        <TextBlock x:Name="CaptionText" Style="{StaticResource TertiaryTextStyle}" />
+    </StackPanel>
+</UserControl>

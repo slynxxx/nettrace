@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:HostedPage
+    x:Class="NetTrace.Views.OverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:views="using:NetTrace.Views"
+    xmlns:controls="using:NetTrace.Controls"
+    xmlns:vm="using:NetTrace.ViewModels"
+    xmlns:models="using:NetTrace.Models">
+
+    <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Auto">
+        <StackPanel Padding="32,4,32,32" Spacing="0" MaxWidth="1400">
+
+            <!-- header -->
+            <Grid Margin="0,0,0,28">
+                <StackPanel Spacing="6">
+                    <TextBlock Style="{StaticResource PageTitleTextStyle}" Text="overview" />
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Ellipse Width="6" Height="6" VerticalAlignment="Center"
+                                 Fill="{ThemeResource TextPrimaryBrush}"
+                                 Visibility="{x:Bind ViewModel.IsOnline, Mode=OneWay}" />
+                        <Ellipse Width="6" Height="6" VerticalAlignment="Center"
+                                 Stroke="{ThemeResource TextSecondaryBrush}" StrokeThickness="1"
+                                 Visibility="{x:Bind ViewModel.IsOnline, Mode=OneWay, Converter={StaticResource InverseBoolToVisibility}}" />
+                        <TextBlock Style="{StaticResource PageSubtitleTextStyle}" Foreground="{ThemeResource TextPrimaryBrush}" Text="{x:Bind ViewModel.StatusText, Mode=OneWay}" />
+                        <TextBlock Style="{StaticResource PageSubtitleTextStyle}" Text="{x:Bind ViewModel.ProfileText, Mode=OneWay}" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <!-- headline statistics -->
+            <Grid ColumnSpacing="0" Margin="0,0,0,28">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <controls:StatItem Grid.Column="0" Label="tcp connections" Value="{x:Bind ViewModel.TcpText, Mode=OneWay}" Caption="ipv4 + ipv6" />
+                <controls:StatItem Grid.Column="1" Label="udp endpoints" Value="{x:Bind ViewModel.UdpText, Mode=OneWay}" Caption="bound sockets" />
+                <controls:StatItem Grid.Column="2" Label="processes" Value="{x:Bind ViewModel.ProcessText, Mode=OneWay}" Caption="owning endpoints" />
+                <controls:StatItem Grid.Column="3" Label="interfaces" Value="{x:Bind ViewModel.InterfaceText, Mode=OneWay}" Caption="{x:Bind ViewModel.InterfaceCaption, Mode=OneWay}" />
+                <controls:StatItem Grid.Column="4" Label="download" Value="{x:Bind ViewModel.DownloadText, Mode=OneWay}" Caption="{x:Bind ViewModel.SessionReceivedText, Mode=OneWay}" />
+                <controls:StatItem Grid.Column="5" Label="upload" Value="{x:Bind ViewModel.UploadText, Mode=OneWay}" Caption="{x:Bind ViewModel.SessionSentText, Mode=OneWay}" />
+            </Grid>
+
+            <TextBlock Style="{StaticResource SecondaryTextStyle}" Margin="0,-16,0,24"
+                       Text="{x:Bind ViewModel.ConnectionError, Mode=OneWay}"
+                       Visibility="{x:Bind ViewModel.HasConnectionError, Mode=OneWay}" />
+
+            <Rectangle Style="{StaticResource DividerStyle}" />
+
+            <!-- traffic -->
+            <Grid Margin="0,20,0,14" ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="4" VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource SectionLabelTextStyle}" Text="traffic" />
+                    <TextBlock Style="{StaticResource TertiaryTextStyle}" Text="{x:Bind ViewModel.InterfaceSelector.Description, Mode=OneWay}" />
+                </StackPanel>
+                <ComboBox Grid.Column="1"
+                          Style="{StaticResource FilterComboBoxStyle}"
+                          MinWidth="220"
+                          ItemsSource="{x:Bind ViewModel.InterfaceSelector.Interfaces}"
+                          SelectedIndex="{x:Bind ViewModel.InterfaceSelector.SelectedIndex, Mode=TwoWay}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="models:NetworkInterfaceInfo">
+                            <TextBlock Text="{x:Bind DisplayName}" FontSize="12" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
+
+            <controls:TrafficGraph Height="200" Samples="{x:Bind ViewModel.History, Mode=OneWay}" VisibleSamples="120" />
+
+            <Grid Margin="0,14,0,0" ColumnSpacing="24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Rectangle Width="14" Height="2" Fill="{ThemeResource GraphPrimaryBrush}" VerticalAlignment="Center" />
+                    <TextBlock Style="{StaticResource SecondaryTextStyle}" Text="download" />
+                    <TextBlock Style="{StaticResource SecondaryTextStyle}" Foreground="{ThemeResource TextPrimaryBrush}" Text="{x:Bind ViewModel.DownloadText, Mode=OneWay}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8">
+                    <Rectangle Width="14" Height="2" Fill="{ThemeResource GraphSecondaryBrush}" VerticalAlignment="Center" />
+                    <TextBlock Style="{StaticResource SecondaryTextStyle}" Text="upload" />
+                    <TextBlock Style="{StaticResource SecondaryTextStyle}" Foreground="{ThemeResource TextPrimaryBrush}" Text="{x:Bind ViewModel.UploadText, Mode=OneWay}" />
+                </StackPanel>
+                <TextBlock Grid.Column="2" Style="{StaticResource TertiaryTextStyle}" HorizontalAlignment="Right" Text="{x:Bind ViewModel.PeakText, Mode=OneWay}" />
+            </Grid>
+
+            <StackPanel Margin="0,8,0,24" Spacing="2">
+                <TextBlock Style="{StaticResource TertiaryTextStyle}" Text="{x:Bind ViewModel.InterfaceTotalsText, Mode=OneWay}" />
+                <TextBlock Style="{StaticResource TertiaryTextStyle}" Text="figures are system-wide interface counters. windows does not expose per-process bandwidth to unprivileged apps, so none is shown." TextWrapping="Wrap" TextTrimming="None" />
+                <TextBlock Style="{StaticResource SecondaryTextStyle}" Text="{x:Bind ViewModel.TrafficError, Mode=OneWay}" Visibility="{x:Bind ViewModel.HasTrafficError, Mode=OneWay}" />
+            </StackPanel>
+
+            <Rectangle Style="{StaticResource DividerStyle}" />
+
+            <!-- recently detected -->
+            <Grid Margin="0,20,0,10">
+                <StackPanel Spacing="4" VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource SectionLabelTextStyle}" Text="recently detected" />
+                    <TextBlock Style="{StaticResource TertiaryTextStyle}" Text="endpoints that appeared after nettrace started" />
+                </StackPanel>
+                <Button HorizontalAlignment="Right" Style="{StaticResource SubtleButtonStyle}" Command="{x:Bind ViewModel.OpenConnectionsCommand}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="all connections" />
+                        <FontIcon Style="{StaticResource IconStyle}" Glyph="&#xE76C;" FontSize="10" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <ListView ItemsSource="{x:Bind ViewModel.RecentConnections}"
+                      SelectionMode="None"
+                      IsItemClickEnabled="True"
+                      ItemClick="OnRecentClick"
+                      ItemContainerStyle="{StaticResource TableRowStyle}"
+                      ScrollViewer.VerticalScrollMode="Disabled"
+                      Visibility="{x:Bind ViewModel.HasRecent, Mode=OneWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:ConnectionRowViewModel">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="84" />
+                                <ColumnDefinition Width="1.3*" />
+                                <ColumnDefinition Width="56" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="110" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource CellSecondaryTextStyle}" Text="{x:Bind FirstSeenText}" />
+                            <TextBlock Grid.Column="1" Style="{StaticResource CellTextStyle}" Text="{x:Bind ProcessName, Mode=OneWay}" />
+                            <TextBlock Grid.Column="2" Style="{StaticResource CellSecondaryTextStyle}" Text="{x:Bind Protocol}" />
+                            <TextBlock Grid.Column="3" Style="{StaticResource CellMonoTextStyle}" Text="{x:Bind RemoteEndpoint}" />
+                            <TextBlock Grid.Column="4" Style="{StaticResource CellSecondaryTextStyle}" Text="{x:Bind State, Mode=OneWay}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <controls:EmptyState
+                Glyph="&#xE839;"
+                Title="nothing new yet"
+                Message="new tcp connections and udp endpoints will appear here as they are opened"
+                Visibility="{x:Bind ViewModel.ShowRecentEmpty, Mode=OneWay}" />
+            <controls:EmptyState
+                IsLoading="True"
+                Title="reading endpoint tables"
+                Visibility="{x:Bind ViewModel.IsLoading, Mode=OneWay}" />
+        </StackPanel>
+    </ScrollViewer>
+</views:HostedPage>

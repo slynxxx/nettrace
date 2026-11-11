@@ -1,0 +1,376 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:NetTrace.Controls">
+
+    <!-- monochrome palette. "Default" is used for the dark theme. -->
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <Color x:Key="AppBackgroundColor">#FF0A0A0B</Color>
+            <Color x:Key="SidebarBackgroundColor">#FF0E0E10</Color>
+            <Color x:Key="SurfaceColor">#FF121214</Color>
+            <Color x:Key="BorderSubtleColor">#FF1E1E21</Color>
+            <Color x:Key="BorderStrongColor">#FF2C2C30</Color>
+            <Color x:Key="TextPrimaryColor">#FFEDEDED</Color>
+            <Color x:Key="TextSecondaryColor">#FF8B8B90</Color>
+            <Color x:Key="TextTertiaryColor">#FF5C5C61</Color>
+            <Color x:Key="HoverColor">#FF17171A</Color>
+            <Color x:Key="PressedColor">#FF141416</Color>
+            <Color x:Key="SelectedColor">#FF1D1D21</Color>
+
+            <SolidColorBrush x:Key="AppBackgroundBrush" Color="{StaticResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="SidebarBackgroundBrush" Color="{StaticResource SidebarBackgroundColor}" />
+            <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource SurfaceColor}" />
+            <SolidColorBrush x:Key="BorderSubtleBrush" Color="{StaticResource BorderSubtleColor}" />
+            <SolidColorBrush x:Key="BorderStrongBrush" Color="{StaticResource BorderStrongColor}" />
+            <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}" />
+            <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondaryColor}" />
+            <SolidColorBrush x:Key="TextTertiaryBrush" Color="{StaticResource TextTertiaryColor}" />
+            <SolidColorBrush x:Key="HoverBrush" Color="{StaticResource HoverColor}" />
+            <SolidColorBrush x:Key="PressedBrush" Color="{StaticResource PressedColor}" />
+            <SolidColorBrush x:Key="SelectedBrush" Color="{StaticResource SelectedColor}" />
+            <SolidColorBrush x:Key="GraphPrimaryBrush" Color="#FFEDEDED" />
+            <SolidColorBrush x:Key="GraphSecondaryBrush" Color="#FF6E6E73" />
+            <SolidColorBrush x:Key="GraphGridBrush" Color="#FF1C1C1F" />
+
+            <!-- neutral accent so every stock control stays monochrome -->
+            <Color x:Key="SystemAccentColor">#FFD9D9D9</Color>
+            <Color x:Key="SystemAccentColorLight1">#FFE3E3E3</Color>
+            <Color x:Key="SystemAccentColorLight2">#FFEDEDED</Color>
+            <Color x:Key="SystemAccentColorLight3">#FFF5F5F5</Color>
+            <Color x:Key="SystemAccentColorDark1">#FFBDBDBD</Color>
+            <Color x:Key="SystemAccentColorDark2">#FF9E9E9E</Color>
+            <Color x:Key="SystemAccentColorDark3">#FF808080</Color>
+            <SolidColorBrush x:Key="AccentFillColorDefaultBrush" Color="#FFEDEDED" />
+            <SolidColorBrush x:Key="AccentFillColorSecondaryBrush" Color="#E6EDEDED" />
+            <SolidColorBrush x:Key="AccentFillColorTertiaryBrush" Color="#CCEDEDED" />
+            <SolidColorBrush x:Key="AccentTextFillColorPrimaryBrush" Color="#FFEDEDED" />
+            <SolidColorBrush x:Key="AccentTextFillColorSecondaryBrush" Color="#FFD9D9D9" />
+            <SolidColorBrush x:Key="AccentTextFillColorTertiaryBrush" Color="#FFBDBDBD" />
+            <SolidColorBrush x:Key="TextOnAccentFillColorPrimaryBrush" Color="#FF0A0A0B" />
+            <SolidColorBrush x:Key="TextOnAccentFillColorSecondaryBrush" Color="#B30A0A0B" />
+
+            <!-- list rows -->
+            <SolidColorBrush x:Key="ListViewItemBackgroundPointerOver" Color="{StaticResource HoverColor}" />
+            <SolidColorBrush x:Key="ListViewItemBackgroundPressed" Color="{StaticResource PressedColor}" />
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="{StaticResource SelectedColor}" />
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="#FF222226" />
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPressed" Color="{StaticResource SelectedColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectionIndicatorBrush" Color="#FFEDEDED" />
+            <SolidColorBrush x:Key="ListViewItemSelectionIndicatorPointerOverBrush" Color="#FFEDEDED" />
+            <SolidColorBrush x:Key="ListViewItemSelectionIndicatorPressedBrush" Color="#FFBDBDBD" />
+
+            <!-- inputs -->
+            <SolidColorBrush x:Key="TextControlBackground" Color="#FF111113" />
+            <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#FF151518" />
+            <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#FF0E0E10" />
+            <SolidColorBrush x:Key="TextControlBorderBrush" Color="#FF26262A" />
+            <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="#FF323237" />
+            <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#FF5C5C61" />
+            <SolidColorBrush x:Key="ComboBoxBackground" Color="#FF111113" />
+            <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="#FF17171A" />
+            <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="#FF26262A" />
+            <SolidColorBrush x:Key="ComboBoxBorderBrushPointerOver" Color="#FF323237" />
+            <SolidColorBrush x:Key="ButtonBackground" Color="#FF141416" />
+            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#FF1A1A1D" />
+            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#FF111113" />
+            <SolidColorBrush x:Key="ButtonBorderBrush" Color="#FF26262A" />
+            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#FF323237" />
+            <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#FF26262A" />
+            <SolidColorBrush x:Key="ContentDialogBackground" Color="#FF111113" />
+            <SolidColorBrush x:Key="ContentDialogBorderBrush" Color="#FF26262A" />
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Light">
+            <Color x:Key="AppBackgroundColor">#FFFAFAFA</Color>
+            <Color x:Key="SidebarBackgroundColor">#FFF4F4F5</Color>
+            <Color x:Key="SurfaceColor">#FFFFFFFF</Color>
+            <Color x:Key="BorderSubtleColor">#FFE7E7E9</Color>
+            <Color x:Key="BorderStrongColor">#FFD4D4D8</Color>
+            <Color x:Key="TextPrimaryColor">#FF111113</Color>
+            <Color x:Key="TextSecondaryColor">#FF6B6B70</Color>
+            <Color x:Key="TextTertiaryColor">#FF9A9AA0</Color>
+            <Color x:Key="HoverColor">#FFF0F0F1</Color>
+            <Color x:Key="PressedColor">#FFE9E9EB</Color>
+            <Color x:Key="SelectedColor">#FFE8E8EA</Color>
+
+            <SolidColorBrush x:Key="AppBackgroundBrush" Color="{StaticResource AppBackgroundColor}" />
+            <SolidColorBrush x:Key="SidebarBackgroundBrush" Color="{StaticResource SidebarBackgroundColor}" />
+            <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource SurfaceColor}" />
+            <SolidColorBrush x:Key="BorderSubtleBrush" Color="{StaticResource BorderSubtleColor}" />
+            <SolidColorBrush x:Key="BorderStrongBrush" Color="{StaticResource BorderStrongColor}" />
+            <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}" />
+            <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondaryColor}" />
+            <SolidColorBrush x:Key="TextTertiaryBrush" Color="{StaticResource TextTertiaryColor}" />
+            <SolidColorBrush x:Key="HoverBrush" Color="{StaticResource HoverColor}" />
+            <SolidColorBrush x:Key="PressedBrush" Color="{StaticResource PressedColor}" />
+            <SolidColorBrush x:Key="SelectedBrush" Color="{StaticResource SelectedColor}" />
+            <SolidColorBrush x:Key="GraphPrimaryBrush" Color="#FF111113" />
+            <SolidColorBrush x:Key="GraphSecondaryBrush" Color="#FF9A9AA0" />
+            <SolidColorBrush x:Key="GraphGridBrush" Color="#FFECECEE" />
+
+            <Color x:Key="SystemAccentColor">#FF2A2A2D</Color>
+            <Color x:Key="SystemAccentColorLight1">#FF3A3A3E</Color>
+            <Color x:Key="SystemAccentColorLight2">#FF4A4A4F</Color>
+            <Color x:Key="SystemAccentColorLight3">#FF5A5A60</Color>
+            <Color x:Key="SystemAccentColorDark1">#FF1A1A1C</Color>
+            <Color x:Key="SystemAccentColorDark2">#FF111113</Color>
+            <Color x:Key="SystemAccentColorDark3">#FF000000</Color>
+            <SolidColorBrush x:Key="AccentFillColorDefaultBrush" Color="#FF1A1A1C" />
+            <SolidColorBrush x:Key="AccentFillColorSecondaryBrush" Color="#E61A1A1C" />
+            <SolidColorBrush x:Key="AccentFillColorTertiaryBrush" Color="#CC1A1A1C" />
+            <SolidColorBrush x:Key="AccentTextFillColorPrimaryBrush" Color="#FF111113" />
+            <SolidColorBrush x:Key="AccentTextFillColorSecondaryBrush" Color="#FF2A2A2D" />
+            <SolidColorBrush x:Key="AccentTextFillColorTertiaryBrush" Color="#FF4A4A4F" />
+            <SolidColorBrush x:Key="TextOnAccentFillColorPrimaryBrush" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="TextOnAccentFillColorSecondaryBrush" Color="#B3FFFFFF" />
+
+            <SolidColorBrush x:Key="ListViewItemBackgroundPointerOver" Color="{StaticResource HoverColor}" />
+            <SolidColorBrush x:Key="ListViewItemBackgroundPressed" Color="{StaticResource PressedColor}" />
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="{StaticResource SelectedColor}" />
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="#FFE2E2E4" />
+            <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPressed" Color="{StaticResource SelectedColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectionIndicatorBrush" Color="#FF111113" />
+            <SolidColorBrush x:Key="ListViewItemSelectionIndicatorPointerOverBrush" Color="#FF111113" />
+            <SolidColorBrush x:Key="ListViewItemSelectionIndicatorPressedBrush" Color="#FF4A4A4F" />
+
+            <SolidColorBrush x:Key="TextControlBackground" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#FFFBFBFB" />
+            <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="TextControlBorderBrush" Color="#FFDCDCE0" />
+            <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="#FFCBCBD0" />
+            <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#FF9A9AA0" />
+            <SolidColorBrush x:Key="ComboBoxBackground" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="#FFF6F6F7" />
+            <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="#FFDCDCE0" />
+            <SolidColorBrush x:Key="ComboBoxBorderBrushPointerOver" Color="#FFCBCBD0" />
+            <SolidColorBrush x:Key="ButtonBackground" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#FFF6F6F7" />
+            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#FFF0F0F1" />
+            <SolidColorBrush x:Key="ButtonBorderBrush" Color="#FFDCDCE0" />
+            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#FFCBCBD0" />
+            <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#FFDCDCE0" />
+            <SolidColorBrush x:Key="ContentDialogBackground" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="ContentDialogBorderBrush" Color="#FFDCDCE0" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <FontFamily x:Key="AppFontFamily">Inter, Segoe UI Variable Text, Segoe UI</FontFamily>
+    <FontFamily x:Key="ContentControlThemeFontFamily">Inter, Segoe UI Variable Text, Segoe UI</FontFamily>
+    <FontFamily x:Key="MonoFontFamily">Cascadia Mono, Consolas</FontFamily>
+    <FontFamily x:Key="IconFontFamily">Segoe Fluent Icons, Segoe MDL2 Assets</FontFamily>
+
+    <CornerRadius x:Key="ControlCornerRadius">3</CornerRadius>
+    <CornerRadius x:Key="OverlayCornerRadius">6</CornerRadius>
+
+    <!-- typography -->
+    <Style x:Key="PageTitleTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{ThemeResource TextPrimaryBrush}" />
+        <Setter Property="CharacterSpacing" Value="-10" />
+    </Style>
+
+    <Style x:Key="PageSubtitleTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="{ThemeResource TextSecondaryBrush}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="SectionLabelTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="CharacterSpacing" Value="40" />
+        <Setter Property="Foreground" Value="{ThemeResource TextSecondaryBrush}" />
+    </Style>
+
+    <Style x:Key="BodyTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Foreground" Value="{ThemeResource TextPrimaryBrush}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="SecondaryTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="{ThemeResource TextSecondaryBrush}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="TertiaryTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="Foreground" Value="{ThemeResource TextTertiaryBrush}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="StatValueTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="CharacterSpacing" Value="-10" />
+        <Setter Property="Foreground" Value="{ThemeResource TextPrimaryBrush}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="CellTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+        <Setter Property="FontSize" Value="12.5" />
+        <Setter Property="Foreground" Value="{ThemeResource TextPrimaryBrush}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="Margin" Value="0,0,12,0" />
+    </Style>
+
+    <Style x:Key="CellSecondaryTextStyle" TargetType="TextBlock" BasedOn="{StaticResource CellTextStyle}">
+        <Setter Property="Foreground" Value="{ThemeResource TextSecondaryBrush}" />
+    </Style>
+
+    <Style x:Key="CellMonoTextStyle" TargetType="TextBlock" BasedOn="{StaticResource CellTextStyle}">
+        <Setter Property="FontFamily" Value="{StaticResource MonoFontFamily}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="SemiLight" />
+        <Setter Property="IsTextSelectionEnabled" Value="False" />
+    </Style>
+
+    <Style x:Key="IconStyle" TargetType="FontIcon">
+        <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <!-- rows of data tables -->
+    <Style x:Key="TableRowStyle" TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="Padding" Value="12,0,12,0" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderBrush" Value="{ThemeResource BorderSubtleBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+    </Style>
+
+    <Style x:Key="ListRowStyle" TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
+        <Setter Property="MinHeight" Value="44" />
+        <Setter Property="Padding" Value="12,6,12,6" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    </Style>
+
+    <Style x:Key="TableHeaderBorderStyle" TargetType="Border">
+        <Setter Property="Padding" Value="12,0,12,0" />
+        <Setter Property="Height" Value="34" />
+        <Setter Property="BorderBrush" Value="{ThemeResource BorderSubtleBrush}" />
+        <Setter Property="BorderThickness" Value="0,1,0,1" />
+    </Style>
+
+    <!-- buttons -->
+    <Style x:Key="SubtleButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{ThemeResource TextSecondaryBrush}" />
+        <Setter Property="Padding" Value="8,5,8,5" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="Root" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Target="Root.Background" Value="{ThemeResource HoverBrush}" />
+                                        <Setter Target="Content.Foreground" Value="{ThemeResource TextPrimaryBrush}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Target="Root.Background" Value="{ThemeResource PressedBrush}" />
+                                        <Setter Target="Content.Foreground" Value="{ThemeResource TextPrimaryBrush}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Target="Content.Foreground" Value="{ThemeResource TextTertiaryBrush}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentPresenter
+                            x:Name="Content"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ToolbarButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+        <Setter Property="Padding" Value="10,5,10,6" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+    </Style>
+
+    <Style x:Key="FilterComboBoxStyle" TargetType="ComboBox" BasedOn="{StaticResource DefaultComboBoxStyle}">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="MinWidth" Value="130" />
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+    </Style>
+
+    <Style x:Key="SearchBoxStyle" TargetType="TextBox" BasedOn="{StaticResource DefaultTextBoxStyle}">
+        <Setter Property="FontSize" Value="12.5" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+    </Style>
+
+    <Style TargetType="controls:SettingRow">
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:SettingRow">
+                    <Grid
+                        MinHeight="60"
+                        Padding="0,12,0,12"
+                        ColumnSpacing="24"
+                        BorderBrush="{ThemeResource BorderSubtleBrush}"
+                        BorderThickness="0,0,0,1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Center" Spacing="3">
+                            <TextBlock Style="{StaticResource BodyTextStyle}" Text="{TemplateBinding Header}" />
+                            <TextBlock Style="{StaticResource SecondaryTextStyle}" Text="{TemplateBinding Description}" TextWrapping="Wrap" TextTrimming="None" />
+                        </StackPanel>
+                        <ContentPresenter
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Content="{TemplateBinding Content}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DividerStyle" TargetType="Rectangle">
+        <Setter Property="Height" Value="1" />
+        <Setter Property="Fill" Value="{ThemeResource BorderSubtleBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+    </Style>
+</ResourceDictionary>

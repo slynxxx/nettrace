@@ -1,0 +1,43 @@
+<UserControl
+    x:Class="NetTrace.Controls.EmptyState"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center">
+
+    <StackPanel MaxWidth="360" Spacing="8" Padding="24">
+        <FontIcon
+            x:Name="Icon"
+            Style="{StaticResource IconStyle}"
+            FontSize="20"
+            Foreground="{ThemeResource TextTertiaryBrush}"
+            HorizontalAlignment="Center" />
+        <ProgressRing
+            x:Name="Spinner"
+            Width="20"
+            Height="20"
+            IsActive="False"
+            Visibility="Collapsed"
+            HorizontalAlignment="Center" />
+        <TextBlock
+            x:Name="TitleText"
+            Style="{StaticResource BodyTextStyle}"
+            HorizontalAlignment="Center"
+            TextAlignment="Center"
+            Margin="0,4,0,0" />
+        <TextBlock
+            x:Name="MessageText"
+            Style="{StaticResource SecondaryTextStyle}"
+            HorizontalAlignment="Center"
+            TextAlignment="Center"
+            TextWrapping="Wrap"
+            TextTrimming="None" />
+        <Button
+            x:Name="ActionButton"
+            Style="{StaticResource ToolbarButtonStyle}"
+            HorizontalAlignment="Center"
+            Margin="0,6,0,0"
+            Visibility="Collapsed"
+            Click="OnActionClick" />
+    </StackPanel>
+</UserControl>
